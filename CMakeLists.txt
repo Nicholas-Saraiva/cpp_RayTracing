@@ -3,6 +3,11 @@ project(RayTracer)
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(SRC
+	src/main.cpp
+	src/Tuple.cpp
+)
+
 include_directories(include)
 
-add_executable(raytracer src/main.cpp src/Tuple.cpp)
+add_executable(raytracer ${SRC})
