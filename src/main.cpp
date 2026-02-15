@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Tuple.hpp"
 #include "Terminal.hpp"
+#include "Math.hpp"
 #include <cmath>
 
 int main() {
@@ -159,5 +160,47 @@ int main() {
 	}
 
 
+	tup1 = rt::Tuple::vector(4, 0, 0);
+	res = rt::Tuple::vector(1, 0, 0);
+
+	if (tup1.normalize() == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector normalize is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector normalize logic." << std::endl;
+	}
+
+	tup1 = rt::Tuple::vector(4, 0, 0);
+	res = rt::Tuple::vector(1, 0, 0);
+
+	if (tup1.normalize() == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector normalize is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector normalize logic." << std::endl;
+	}
+
+	tup1 = rt::Tuple::vector(1, 2, 3);
+	res = rt::Tuple::vector(0.26726, 0.53452, 0.80178);
+
+	if (tup1.normalize() == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector normalize is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector normalize logic." << std::endl;
+	}
+
+	mag = tup1.normalize().magnitude();
+
+	if (rt::equal(mag, 1)) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The magnitude of a normalized vector is 1" << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "The magnitude of a normalized vector is not 1" << std::endl;
+	}
 	return 0;
 }

@@ -21,6 +21,10 @@ namespace rt {
         return (std::sqrt(x * x + y * y + z * z + w * w));
     }
 
+	Tuple Tuple::normalize() const {
+        return (*this / this->magnitude());
+    }
+
 	Tuple&	Tuple::operator+=(const Tuple& other){
 		x += other.x;
 		y += other.y;

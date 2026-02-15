@@ -12,6 +12,7 @@ namespace rt {
 
 		bool	is_point() const;
 		float	magnitude() const;
+		Tuple	normalize()	const;
 
 		Tuple	operator+(const Tuple& other) const;
 		Tuple	operator-(const Tuple& other) const;
