@@ -47,15 +47,30 @@ namespace rt {
 		return result;
 	}
 
+	Tuple&	Tuple::operator*=(const float num){
+		x *= num;
+		y *= num;
+		z *= num;
+		w *= num;
+		return *this;
+	}
+
+	Tuple	Tuple::operator*(const float num) const{
+		Tuple	result = *this;
+
+		result *= num;
+		return result;
+	}
+
 	Tuple	Tuple::operator-() const{
 		return Tuple(-x, -y, -z, -w);
 	}
 
 	bool	Tuple::operator==(const Tuple& other) const {
-		return (x == other.x &&
-				y == other.y &&
-				z == other.z &&
-				w == other.w
+		return (equal(x, other.x) &&
+				equal(y, other.y) &&
+				equal(z, other.z) &&
+				equal(w, other.w)
 		);
 	}
 

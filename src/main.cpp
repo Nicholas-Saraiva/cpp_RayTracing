@@ -79,6 +79,27 @@ int main() {
 		rt::color::RESET << "in Tuple negation logic." << std::endl;
 	}
 
+	tup1 = rt::Tuple(1, -2, 3, -4);
+	res  = rt::Tuple(3.5, -7, 10.5, -14);
+
+	if (tup1 * 3.5 == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Tuple multply correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Tuple multply logic." << std::endl;
+	}
+
+	res  = rt::Tuple(0.5, -1, 1.5, -2);
+
+	if (tup1 * 0.5 == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Tuple multply correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Tuple multply logic." << std::endl;
+	}
+
 
 	return 0;
 }
