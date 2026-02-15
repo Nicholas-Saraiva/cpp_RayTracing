@@ -1,7 +1,7 @@
 #pragma once
 
 namespace rt {
-	namespace color {
+	namespace term {
 		const char* const RESET   = "\033[0m";
         const char* const RED     = "\033[31m";
         const char* const GREEN   = "\033[32m";
