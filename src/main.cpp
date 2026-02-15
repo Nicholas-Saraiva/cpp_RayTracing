@@ -100,6 +100,16 @@ int main() {
 		rt::color::RESET << "in Tuple multply logic." << std::endl;
 	}
 
+	tup1 = rt::Tuple(1, -2, 3, -4);
+	res  = rt::Tuple(0.5, -1, 1.5, -2);
+
+	if (tup1 / 2 == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Tuple divided correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Tuple divided logic." << std::endl;
+	}
 
 	return 0;
 }

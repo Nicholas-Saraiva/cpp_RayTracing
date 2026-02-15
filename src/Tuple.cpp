@@ -62,6 +62,24 @@ namespace rt {
 		return result;
 	}
 
+	Tuple&	Tuple::operator/=(const float num){
+		float n = 1 / num;
+
+		x *= n;
+		y *= n;
+		z *= n;
+		w *= n;
+		return *this;
+	}
+
+	Tuple	Tuple::operator/(const float num) const{
+		Tuple	result = *this;
+
+		result /= num;
+		return result;
+	}
+
+
 	Tuple	Tuple::operator-() const{
 		return Tuple(-x, -y, -z, -w);
 	}

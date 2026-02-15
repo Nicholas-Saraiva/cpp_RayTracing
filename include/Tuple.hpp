@@ -15,10 +15,12 @@ namespace rt {
 		Tuple	operator+(const Tuple& other) const;
 		Tuple	operator-(const Tuple& other) const;
 		Tuple	operator*(const float num) const;
+		Tuple	operator/(const float num) const;
 		Tuple	operator-() const;
 		Tuple&	operator+=(const Tuple& other);
 		Tuple&	operator-=(const Tuple& other);
 		Tuple&	operator*=(const float num);
+		Tuple&	operator/=(const float num);
 		bool	operator==(const Tuple& other) const;
 	};
 }
