@@ -68,5 +68,17 @@ int main() {
 		rt::color::RESET << "in Tuple subtract logic." << std::endl;
 	}
 
+	tup1 = rt::Tuple(1, -2, 3, -4);
+	res  = rt::Tuple(-1, 2, -3, 4);
+
+	if (-tup1 == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Tuple negation work correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Tuple negation logic." << std::endl;
+	}
+
+
 	return 0;
 }

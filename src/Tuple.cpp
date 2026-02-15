@@ -47,6 +47,10 @@ namespace rt {
 		return result;
 	}
 
+	Tuple	Tuple::operator-() const{
+		return Tuple(-x, -y, -z, -w);
+	}
+
 	bool	Tuple::operator==(const Tuple& other) const {
 		return (x == other.x &&
 				y == other.y &&
