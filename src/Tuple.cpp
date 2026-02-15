@@ -16,4 +16,28 @@ namespace rt {
     bool Tuple::is_point() const {
         return equal(w, 1.0f);
     }
+
+	Tuple&	Tuple::operator+=(const Tuple& other){
+		x += other.x;
+		y += other.y;
+		z += other.z;
+		w += other.w;
+		return *this;
+	}
+
+	Tuple	Tuple::operator+(const Tuple& other) const{
+		Tuple	result = *this;
+
+		result += other;
+		return result;
+	}
+
+	bool	Tuple::operator==(const Tuple& other) const {
+		return (x == other.x &&
+				y == other.y &&
+				z == other.z &&
+				w == other.w
+		);
+	}
+
 }
