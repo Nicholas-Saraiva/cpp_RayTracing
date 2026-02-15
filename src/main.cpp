@@ -241,11 +241,57 @@ int main() {
 
 	if (rt::equal(c1.r, -0.5) && rt::equal(c1.g, 0.4) && rt::equal(c1.b, 1.7)) {
 		std::cout << "Status: " << rt::term::GREEN << "Success! " <<
-			rt::term::RESET << "The Color cross is assigned correctly." << std::endl;
+			rt::term::RESET << "Color cross is assigned correctly." << std::endl;
 	} else {
 		std::cout << "Status: " << rt::term::RED << "Error " <<
 		rt::term::RESET << "in Color assigned logic." << std::endl;
 	}
 
+	auto c1_add = rt::Color(0.9, 0.6, 0.75);
+    auto c2_add = rt::Color(0.7, 0.1, 0.25);
+    auto res_add = rt::Color(1.6, 0.7, 1.0);
+
+    if ((c1_add + c2_add) == res_add) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Color addition is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Color addition logic." << std::endl;
+    }
+
+    auto c1_sub = rt::Color(0.9, 0.6, 0.75);
+    auto c2_sub = rt::Color(0.7, 0.1, 0.25);
+    auto res_sub = rt::Color(0.2, 0.5, 0.5);
+
+    if ((c1_sub - c2_sub) == res_sub) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Color subtraction is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Color subtraction logic." << std::endl;
+    }
+
+    auto c_scalar = rt::Color(0.2, 0.3, 0.4);
+    auto res_scalar = rt::Color(0.4, 0.6, 0.8);
+
+    if ((c_scalar * 2) == res_scalar) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Color scalar multiplication is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Color scalar multiplication logic." << std::endl;
+    }
+
+    auto c1_prod = rt::Color(1.0, 0.2, 0.4);
+    auto c2_prod = rt::Color(0.9, 1.0, 0.1);
+    auto res_prod = rt::Color(0.9, 0.2, 0.04);
+
+    if ((c1_prod * c2_prod) == res_prod) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Color Hadamard product is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Color multiplication logic." << std::endl;
+    }
 	return 0;
 }
