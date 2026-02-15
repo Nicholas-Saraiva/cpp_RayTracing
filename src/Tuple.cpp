@@ -17,6 +17,10 @@ namespace rt {
         return equal(w, 1.0f);
     }
 
+	float Tuple::magnitude() const {
+        return (std::sqrt(x * x + y * y + z * z + w * w));
+    }
+
 	Tuple&	Tuple::operator+=(const Tuple& other){
 		x += other.x;
 		y += other.y;

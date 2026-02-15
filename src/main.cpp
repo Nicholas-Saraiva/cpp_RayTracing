@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Tuple.hpp"
 #include "Terminal.hpp"
+#include <cmath>
 
 int main() {
 	auto my_point = rt::Tuple::point(4.3f, -4.2f, 3.1f);
@@ -110,6 +111,53 @@ int main() {
 		std::cout << "Status: " << rt::color::RED << "Error " <<
 		rt::color::RESET << "in Tuple divided logic." << std::endl;
 	}
+
+	std::cout << "\n--- Vector Operations ---" << std::endl;
+
+
+	tup1 = rt::Tuple::vector(1, 0, 0);
+	float	mag = 1;
+
+	if (tup1.magnitude() == mag) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector magnitude is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector magnitude logic." << std::endl;
+	}
+
+
+	tup1 = rt::Tuple::vector(0, 1, 0);
+
+	if (tup1.magnitude() == mag) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector magnitude is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector magnitude logic." << std::endl;
+	}
+
+	tup1 = rt::Tuple::vector(0, 0, 1);
+
+	if (tup1.magnitude() == mag) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector magnitude is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector magnitude logic." << std::endl;
+	}
+
+	tup1 = rt::Tuple::vector(1, -2, -3);
+	mag = std::sqrt(14);
+
+	if (tup1.magnitude() == mag) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector magnitude is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector magnitude logic." << std::endl;
+	}
+
 
 	return 0;
 }

@@ -11,6 +11,7 @@ namespace rt {
 		static Tuple	vector(float x, float y, float z);
 
 		bool	is_point() const;
+		float	magnitude() const;
 
 		Tuple	operator+(const Tuple& other) const;
 		Tuple	operator-(const Tuple& other) const;
