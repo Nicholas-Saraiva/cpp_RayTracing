@@ -12,8 +12,10 @@ namespace rt {
 
 		bool	is_point() const;
 
-		Tuple&	operator+=(const Tuple& other);
 		Tuple	operator+(const Tuple& other) const;
+		Tuple	operator-(const Tuple& other) const;
+		Tuple&	operator+=(const Tuple& other);
+		Tuple&	operator-=(const Tuple& other);
 		bool	operator==(const Tuple& other) const;
 	};
 }

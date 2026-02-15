@@ -29,7 +29,7 @@ int main() {
 		rt::color::RESET << "in Tuple logic." << std::endl;
 	}
 
-	std::cout << "--- Tuples Operations ---" << std::endl;
+	std::cout << "\n--- Tuples Operations ---" << std::endl;
 
 	auto	tup1 = rt::Tuple(3, -2, 5, 1);
 	auto	tup2 = rt::Tuple(-2, 3, 1, 0);
@@ -40,9 +40,33 @@ int main() {
 			rt::color::RESET << "The Tuple sum correctly." << std::endl;
 	} else {
 		std::cout << "Status: " << rt::color::RED << "Error " <<
-		rt::color::RESET << "in Tuple logic." << std::endl;
+		rt::color::RESET << "in Tuple sum logic." << std::endl;
 	}
 
+
+	tup1 = rt::Tuple::point(3, 2, 1);
+	tup2 = rt::Tuple::point(5, 6, 7);
+	res  = rt::Tuple::vector(-2, -4, -6);
+
+	if ((tup1 - tup2) == rt::Tuple(-2, -4, -6, 0)) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Tuple subtract correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Tuple subtract logic." << std::endl;
+	}
+
+	tup1 = rt::Tuple::vector(3, 2, 1);
+	tup2 = rt::Tuple::vector(5, 6, 7);
+	res  = rt::Tuple::vector(-2, -4, -6);
+
+	if ((tup1 - tup2) == rt::Tuple(-2, -4, -6, 0)) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Tuple subtract correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Tuple subtract logic." << std::endl;
+	}
 
 	return 0;
 }
