@@ -202,5 +202,37 @@ int main() {
 		std::cout << "Status: " << rt::color::RED << "Error " <<
 		rt::color::RESET << "The magnitude of a normalized vector is not 1" << std::endl;
 	}
+
+
+	tup1 = rt::Tuple::vector(1, 2, 3);
+	tup2 = rt::Tuple::vector(2, 3, 4);
+
+	if (rt::equal(rt::Tuple::dot(tup1, tup2), 20)) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector dot is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector dot logic." << std::endl;
+	}
+
+	res = rt::Tuple::vector(-1, 2, -1);
+
+	if (rt::Tuple::cross(tup1, tup2) == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector cross is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector cross logic." << std::endl;
+	}
+
+	res = rt::Tuple::vector(1, -2, 1);
+
+	if (rt::Tuple::cross(tup2, tup1) == res) {
+		std::cout << "Status: " << rt::color::GREEN << "Success! " <<
+			rt::color::RESET << "The Vector cross is handled correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::color::RED << "Error " <<
+		rt::color::RESET << "in Vector cross logic." << std::endl;
+	}
 	return 0;
 }

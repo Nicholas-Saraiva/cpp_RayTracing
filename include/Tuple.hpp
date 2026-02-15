@@ -3,12 +3,14 @@
 namespace rt {
 	class	Tuple{
 	public:
-		float x, y, z, w;
+		float	x, y, z, w;
 		Tuple() = default;
 		Tuple(float x, float y, float z, float w);
 
-		static Tuple	point(float x, float y, float z);
-		static Tuple	vector(float x, float y, float z);
+		static	Tuple	point(float x, float y, float z);
+		static	Tuple	vector(float x, float y, float z);
+		static	Tuple	cross(const Tuple& a, const Tuple& b);
+		static	float	dot(const Tuple& a, const Tuple& b);
 
 		bool	is_point() const;
 		float	magnitude() const;
