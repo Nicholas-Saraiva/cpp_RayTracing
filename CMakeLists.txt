@@ -7,6 +7,7 @@ set(SRC
 	src/main.cpp
 	src/Tuple.cpp
 	src/Color.cpp
+	src/Canvas.cpp
 )
 
 include_directories(include)

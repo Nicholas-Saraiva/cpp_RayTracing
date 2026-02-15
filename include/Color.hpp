@@ -5,6 +5,7 @@ namespace rt {
 	public:
 		float	r,g,b;
 
+		Color();
 		Color(float r, float g, float b);
 
 
@@ -19,6 +20,7 @@ namespace rt {
 		Color&	operator*=(const Color& other);
 		Color&	operator*=(const float num);
 		Color&	operator/=(const float num);
+		Color&	operator=(const Color& other) = default;
 		bool	operator==(const Color& other) const;
 	};
 }

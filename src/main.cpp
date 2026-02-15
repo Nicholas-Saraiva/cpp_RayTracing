@@ -3,6 +3,7 @@
 #include "Terminal.hpp"
 #include "Math.hpp"
 #include "Color.hpp"
+#include "Canvas.hpp"
 #include <cmath>
 
 int main() {
@@ -293,5 +294,21 @@ int main() {
         std::cout << "Status: " << rt::term::RED << "Error " <<
             rt::term::RESET << "in Color multiplication logic." << std::endl;
     }
+
+	std::cout << "\n--- Canvas Operations ---" << std::endl;
+
+
+	auto canvas = rt::Canvas(10 ,20);
+	c1 = rt::Color(1, 0, 0);
+	canvas.write_pixel(2, 3, c1);
+
+	if ((canvas.pixel_at(2, 3)) == c1) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Cavas write_pixel/pixel_at is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Cavas write_pixel/pixel_at logic." << std::endl;
+    }
+
 	return 0;
 }
