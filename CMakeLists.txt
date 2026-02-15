@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(SRC
 	src/main.cpp
 	src/Tuple.cpp
+	src/Color.cpp
 )
 
 include_directories(include)

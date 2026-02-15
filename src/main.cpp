@@ -2,6 +2,7 @@
 #include "Tuple.hpp"
 #include "Terminal.hpp"
 #include "Math.hpp"
+#include "Color.hpp"
 #include <cmath>
 
 int main() {
@@ -114,7 +115,6 @@ int main() {
 	}
 
 	std::cout << "\n--- Vector Operations ---" << std::endl;
-
 
 	tup1 = rt::Tuple::vector(1, 0, 0);
 	float	mag = 1;
@@ -234,5 +234,18 @@ int main() {
 		std::cout << "Status: " << rt::term::RED << "Error " <<
 		rt::term::RESET << "in Vector cross logic." << std::endl;
 	}
+
+	std::cout << "\n--- Color Operations ---" << std::endl;
+
+	auto c1 = rt::Color(-0.5, 0.4, 1.7);
+
+	if (rt::equal(c1.r, -0.5) && rt::equal(c1.g, 0.4) && rt::equal(c1.b, 1.7)) {
+		std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+			rt::term::RESET << "The Color cross is assigned correctly." << std::endl;
+	} else {
+		std::cout << "Status: " << rt::term::RED << "Error " <<
+		rt::term::RESET << "in Color assigned logic." << std::endl;
+	}
+
 	return 0;
 }
