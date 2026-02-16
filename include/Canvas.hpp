@@ -11,6 +11,7 @@ namespace rt {
 		Canvas(int w, int h);
 
 		void	write_pixel(const int x, const int y, const Color& color);
+		void	canvas_to_ppm() const;
 		Color	pixel_at(const int x, const int y) const;
 
 	};

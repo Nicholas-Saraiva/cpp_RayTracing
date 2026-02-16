@@ -310,5 +310,16 @@ int main() {
             rt::term::RESET << "in Cavas write_pixel/pixel_at logic." << std::endl;
     }
 
+	canvas = rt::Canvas(5, 3);
+	try
+	{
+		canvas.canvas_to_ppm();
+		std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+		rt::term::RESET << "Cavas canvas_to_ppm is handled correctly." << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }
