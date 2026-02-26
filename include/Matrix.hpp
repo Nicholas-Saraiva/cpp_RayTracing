@@ -12,8 +12,9 @@ namespace rt {
 		Matrix(int size, std::vector<float> vec);
 
 		static Matrix	multiply_matrix(const Matrix& A, const Matrix& B);
-		static Tuple	multiply_tuple(const Matrix& A, const Tuple& B);
 		static Matrix	Identity(int size);
+		static Matrix	Transpose(const Matrix& M);
+		static Tuple	multiply_tuple(const Matrix& A, const Tuple& B);
 
 		Matrix	operator+(const Matrix& other) const;
 		Matrix	operator-(const Matrix& other) const;

@@ -53,4 +53,13 @@ namespace rt {
 			M.values[i * size + i] = 1.0f;
 		return (M);
 	}
+
+	Matrix	Matrix::Transpose(const Matrix& M) {
+		auto T = Matrix(M.size);
+
+		for (int row = 0; row < M.size; row++)
+			for (int col = 0; col < M.size; col++)
+				T.values[col * M.size + row] = M.values[row * M.size + col];
+		return (T);
+	}
 }
