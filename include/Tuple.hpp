@@ -6,6 +6,7 @@ namespace rt {
 		float	x, y, z, w;
 		Tuple() = default;
 		Tuple(float x, float y, float z, float w);
+		Tuple(const float (&v)[4]);
 
 		static	Tuple	point(float x, float y, float z);
 		static	Tuple	vector(float x, float y, float z);

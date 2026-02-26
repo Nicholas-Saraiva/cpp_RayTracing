@@ -4,6 +4,7 @@
 #include "Math.hpp"
 #include "Color.hpp"
 #include "Canvas.hpp"
+#include "Matrix.hpp"
 #include <cmath>
 
 int main() {
@@ -321,5 +322,64 @@ int main() {
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	std::cout << "\n--- Matrix Operations ---" << std::endl;
+
+    // Test 1: Matrix Multiplication
+    auto m1 = rt::Matrix(4, {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    });
+    auto m2 = rt::Matrix(4, {
+        -2, 1, 2,  3,
+         3, 2, 1, -1,
+         4, 3, 6,  5,
+         1, 2, 7,  8
+    });
+    auto res_m = rt::Matrix(4, {
+        20, 22, 50,  48,
+        44, 54, 114, 108,
+        40, 58, 110, 102,
+        16, 26, 46,  42
+    });
+
+    if (rt::Matrix::multiply_matrix(m1, m2) == res_m) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Matrix multiplication is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Matrix multiplication logic." << std::endl;
+    }
+
+    // Test 2: Matrix * Tuple
+    auto m3 = rt::Matrix(4, {
+        1, 2, 3, 4,
+        2, 4, 4, 2,
+        8, 6, 4, 1,
+        0, 0, 0, 1
+    });
+    auto tup_in = rt::Tuple(1, 2, 3, 1);
+    auto res_tup = rt::Tuple(18, 24, 33, 1);
+
+    if (rt::Matrix::multiply_tuple(m3, tup_in) == res_tup) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Matrix * Tuple is handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Matrix * Tuple logic." << std::endl;
+    }
+
+    // Test 3: Identity Matrix
+    auto ident = rt::Matrix::Identity(4);
+    if (rt::Matrix::multiply_tuple(ident, tup_in) == tup_in) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Identity Matrix multiplication works." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Identity Matrix logic." << std::endl;
+    }
+
 	return 0;
 }

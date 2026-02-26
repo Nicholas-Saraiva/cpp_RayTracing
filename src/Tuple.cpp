@@ -5,6 +5,9 @@ namespace rt {
     Tuple::Tuple(float x, float y, float z, float w)
         : x(x), y(y), z(z), w(w) {}
 
+    Tuple::Tuple(const float (&v)[4])
+        : x(v[0]), y(v[1]), z(v[2]), w(v[3]) {}
+
 	Tuple	Tuple::point(float x, float y, float z) {
 		return (Tuple(x, y, z, 1.0f));
 	}
