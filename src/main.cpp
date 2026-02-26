@@ -381,5 +381,66 @@ int main() {
             rt::term::RESET << "in Identity Matrix logic." << std::endl;
     }
 
+	std::cout << "\n--- Matrix Complexity (Submatrices & Determinants) ---" << std::endl;
+
+    // --- 2x2 Determinant ---
+    auto m2x2 = rt::Matrix(2, {
+         1, 5,
+        -3, 2
+    });
+
+    if (rt::equal(rt::Matrix::Determinant(m2x2), 17.0f)) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "2x2 Determinant is 17." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in 2x2 Determinant logic." << std::endl;
+    }
+
+    // --- Submatrix Test ---
+    auto m3x3 = rt::Matrix(3, {
+         1, 5,  0,
+        -3, 2,  7,
+         0, 6, -3
+    });
+    auto sub_expected = rt::Matrix(2, {
+        -3, 2,
+         0, 6
+    });
+
+    // Removing row 0, col 2 from m3x3
+    if (rt::Matrix::SubMatrix(m3x3, 0, 2) == sub_expected) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Submatrix (3x3 -> 2x2) correctly identified." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Submatrix logic." << std::endl;
+    }
+
+    // --- Cofactor Test ---
+    // Checking the "checkerboard" sign flipping logic
+    if (rt::equal(rt::Matrix::Cofactor(m3x3, 0, 0), -48.0f) && rt::equal(rt::Matrix::Cofactor(m3x3, 0, 1), -9.0f)) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Cofactors (sign flipping) handled correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Cofactor logic." << std::endl;
+    }
+
+    // --- 4x4 Determinant (The "Big Boss") ---
+    auto m4x4 = rt::Matrix(4, {
+        -2, -8,  3,  5,
+        -3,  1,  7,  3,
+         1,  2, -9,  6,
+        -6,  7,  7, -9
+    });
+
+    if (rt::equal(rt::Matrix::Determinant(m4x4), -4071.0f)) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "4x4 Determinant (-4071) is correct." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in 4x4 Determinant logic." << std::endl;
+    }
 	return 0;
 }
