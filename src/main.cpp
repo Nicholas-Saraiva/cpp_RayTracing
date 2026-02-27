@@ -389,7 +389,7 @@ int main() {
         -3, 2
     });
 
-    if (rt::equal(rt::Matrix::Determinant(m2x2), 17.0f)) {
+    if (rt::equal(m2x2.Determinant(m2x2), 17.0f)) {
         std::cout << "Status: " << rt::term::GREEN << "Success! " <<
             rt::term::RESET << "2x2 Determinant is 17." << std::endl;
     } else {
@@ -409,7 +409,7 @@ int main() {
     });
 
     // Removing row 0, col 2 from m3x3
-    if (rt::Matrix::SubMatrix(m3x3, 0, 2) == sub_expected) {
+    if (m3x3.SubMatrix(m3x3, 0, 2) == sub_expected) {
         std::cout << "Status: " << rt::term::GREEN << "Success! " <<
             rt::term::RESET << "Submatrix (3x3 -> 2x2) correctly identified." << std::endl;
     } else {
@@ -419,7 +419,7 @@ int main() {
 
     // --- Cofactor Test ---
     // Checking the "checkerboard" sign flipping logic
-    if (rt::equal(rt::Matrix::Cofactor(m3x3, 0, 0), -48.0f) && rt::equal(rt::Matrix::Cofactor(m3x3, 0, 1), -9.0f)) {
+    if (rt::equal(m3x3.Cofactor(m3x3, 0, 0), -48.0f) && rt::equal(m3x3.Cofactor(m3x3, 0, 1), -9.0f)) {
         std::cout << "Status: " << rt::term::GREEN << "Success! " <<
             rt::term::RESET << "Cofactors (sign flipping) handled correctly." << std::endl;
     } else {
@@ -435,7 +435,7 @@ int main() {
         -6,  7,  7, -9
     });
 
-    if (rt::equal(rt::Matrix::Determinant(m4x4), -4071.0f)) {
+    if (rt::equal(m4x4.Determinant(m4x4), -4071.0f)) {
         std::cout << "Status: " << rt::term::GREEN << "Success! " <<
             rt::term::RESET << "4x4 Determinant (-4071) is correct." << std::endl;
     } else {

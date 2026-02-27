@@ -54,7 +54,7 @@ namespace rt {
 		return (M);
 	}
 
-	Matrix	Matrix::Transpose(const Matrix& M) {
+	Matrix	Matrix::Transpose(const Matrix& M) const{
 		auto	T = Matrix(M.size);
 
 		for (int row = 0; row < M.size; row++)
@@ -64,7 +64,7 @@ namespace rt {
 	}
 
 
-	Matrix	Matrix::SubMatrix(const Matrix& M, int row, int col) {
+	Matrix	Matrix::SubMatrix(const Matrix& M, int row, int col) const {
 		auto	S = Matrix(M.size - 1);
 		int		s_row = 0;
 		int		s_col = 0;
@@ -84,7 +84,7 @@ namespace rt {
 		return (S);
 	}
 
-	float	Matrix::Determinant(const Matrix& M) {
+	float	Matrix::Determinant(const Matrix& M) const {
 		float	det = 0.0f;
 		if (M.size == 2)
 			return (M.values[0] * M.values[3] - M.values[1] * M.values[2]);
@@ -93,13 +93,13 @@ namespace rt {
 		return (det);
 	}
 
-	float	Matrix::Minor(const Matrix& M, int row, int col) {
+	float	Matrix::Minor(const Matrix& M, int row, int col) const {
 		auto	S = SubMatrix(M, row, col);
 
 		return (Determinant(S));
 	}
 
-	float	Matrix::Cofactor(const Matrix& M, int row, int col) {
+	float	Matrix::Cofactor(const Matrix& M, int row, int col) const {
 		float	minor = Minor(M, row, col);
 
 		return ((row + col) % 2 == 0 ? minor : -minor);
