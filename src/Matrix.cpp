@@ -54,6 +54,75 @@ namespace rt {
 		return (M);
 	}
 
+	Matrix	Matrix::Translation(const Tuple& T) {
+		auto	Tm = Identity(4);
+
+		Tm.values[3] = T.x;
+		Tm.values[7] = T.y;
+		Tm.values[11] = T.z;
+		return (Tm);
+	}
+
+	Matrix	Matrix::Scaling(const Tuple& T) {
+		auto	S = Identity(4);
+
+		S.values[0] = T.x;
+		S.values[5] = T.y;
+		S.values[10] = T.z;
+		return (S);
+	}
+
+	Matrix	Matrix::Rotation_x(const float angle)  {
+		auto	Rx = Identity(4);
+		float	rad = angle * M_PI / 180.0f;
+		float	cos_a = std::cos(rad);
+		float	sin_a = std::sin(rad);
+
+		Rx.values[5] = cos_a;
+		Rx.values[6] = -sin_a;
+		Rx.values[9] = sin_a;
+		Rx.values[10] = cos_a;
+		return (Rx);
+	}
+
+	Matrix	Matrix::Rotation_y(const float angle) {
+		auto	Ry = Identity(4);
+		float	rad = angle * M_PI / 180.0f;
+		float	cos_a = std::cos(rad);
+		float	sin_a = std::sin(rad);
+
+		Ry.values[0] = cos_a;
+		Ry.values[2] = sin_a;
+		Ry.values[8] = -sin_a;
+		Ry.values[10] = cos_a;
+		return (Ry);
+	}
+
+	Matrix	Matrix::Rotation_z(const float angle) {
+		auto	Rz = Identity(4);
+		float	rad = angle * M_PI / 180.0f;
+		float	cos_a = std::cos(rad);
+		float	sin_a = std::sin(rad);
+
+		Rz.values[0] = cos_a;
+		Rz.values[1] = -sin_a;
+		Rz.values[4] = sin_a;
+		Rz.values[5] = cos_a;
+		return (Rz);
+	}
+
+	Matrix	Matrix::Shearing(float xy, float xz, float yx, float yz, float zx, float zy) {
+		auto	Sh = Identity(4);
+
+		Sh.values[1] = xy;
+		Sh.values[2] = xz;
+		Sh.values[4] = yx;
+		Sh.values[6] = yz;
+		Sh.values[8] = zx;
+		Sh.values[9] = zy;
+		return (Sh);
+	}
+
 	Matrix	Matrix::Transpose() const{
 		auto	T = Matrix(size);
 

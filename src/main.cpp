@@ -493,5 +493,79 @@ std::cout << "\n--- Matrix Inversion (The Final Boss) ---" << std::endl;
         std::cout << "Status: " << rt::term::RED << "Error " <<
             rt::term::RESET << "The result of A * A^-1 is not Identity." << std::endl;
     }
+
+std::cout << "\n--- Matrix Transformations ---" << std::endl;
+
+    // --- Translation Test ---
+    auto transform = rt::Matrix::Translation(rt::Tuple::vector(5, -3, 2));
+    auto p = rt::Tuple::point(-3, 4, 5);
+    auto p_expected = rt::Tuple::point(2, 1, 7);
+
+    if (rt::Matrix::multiply_tuple(transform, p) == p_expected) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Point translation works correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in translation logic." << std::endl;
+    }
+
+    // --- Translation should not affect Vectors ---
+    auto v = rt::Tuple::vector(-3, 4, 5);
+    if (rt::Matrix::multiply_tuple(transform, v) == v) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Translation ignored the vector (as it should)." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "Translation incorrectly moved a vector." << std::endl;
+    }
+
+    // --- Scaling Test ---
+    transform = rt::Matrix::Scaling(rt::Tuple::vector(2, 3, 4));
+    p = rt::Tuple::point(-4, 6, 8);
+    p_expected = rt::Tuple::point(-8, 18, 32);
+
+    if (rt::Matrix::multiply_tuple(transform, p) == p_expected) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Scaling works correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in scaling logic." << std::endl;
+    }
+
+    // --- Rotation X Test ---
+    auto half_quarter = rt::Matrix::Rotation_x(45);
+    auto full_quarter = rt::Matrix::Rotation_x(90);
+    p = rt::Tuple::point(0, 1, 0);
+
+    auto expected_hq = rt::Tuple::point(0, std::sqrt(2)/2, std::sqrt(2)/2);
+    auto expected_fq = rt::Tuple::point(0, 0, 1);
+
+    if (rt::Matrix::multiply_tuple(half_quarter, p) == expected_hq && rt::Matrix::multiply_tuple(full_quarter, p) == expected_fq) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Rotation X works correctly." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Rotation X logic." << std::endl;
+    }
+
+    // --- Chaining Transformations (The Ultimate Test) ---
+    // In Ray Tracing, order matters! Multiply in REVERSE order of application.
+    auto A = rt::Matrix::Rotation_x(90);
+    auto B = rt::Matrix::Scaling(rt::Tuple::vector(5, 5, 5));
+    auto C = rt::Matrix::Translation(rt::Tuple::vector(10, 5, 7));
+
+    // Apply: Rotate, then Scale, then Translate
+    auto T_chained = rt::Matrix::multiply_matrix(C, rt::Matrix::multiply_matrix(B, A));
+    p = rt::Tuple::point(1, 0, 1);
+    auto res_chained = rt::Tuple::point(15, 0, 7);
+
+    if (rt::Matrix::multiply_tuple(T_chained, p) == res_chained) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Chained transformations (T*S*R) work!" << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in chained transformation order." << std::endl;
+    }
+
 	return 0;
 }
