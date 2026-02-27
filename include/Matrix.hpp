@@ -17,6 +17,7 @@ namespace rt {
 
 		Matrix	Transpose() const;
 		Matrix	SubMatrix(int row, int col) const;
+		Matrix	Inverse() const;
 		float	Determinant() const;
 		float	Minor(int row, int col) const;
 		float	Cofactor(int row, int col) const;

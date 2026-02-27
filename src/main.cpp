@@ -442,5 +442,56 @@ int main() {
         std::cout << "Status: " << rt::term::RED << "Error " <<
             rt::term::RESET << "in 4x4 Determinant logic." << std::endl;
     }
+
+std::cout << "\n--- Matrix Inversion (The Final Boss) ---" << std::endl;
+
+    // --- Test 1: Invertibility Check ---
+    auto m_invertible = rt::Matrix(4, {
+        6,  4,  4,  4,
+        5,  5,  7,  6,
+        4, -9,  3, -7,
+        9,  1,  7, -6
+    });
+
+    if (m_invertible.Determinant() != 0) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Matrix is correctly identified as invertible." << std::endl;
+    }
+
+    // --- Test 2: Actual Inversion ---
+    auto m_to_invert = rt::Matrix(4, {
+        -5,  2,  6, -8,
+         1, -5,  1,  8,
+         7,  7, -6, -7,
+         1, -3,  7,  4
+    });
+
+    auto m_expected_inv = rt::Matrix(4, {
+         0.21805f,  0.45113f,  0.24060f, -0.04511f,
+        -0.80827f, -1.45677f, -0.44361f,  0.52068f,
+        -0.07895f, -0.22368f, -0.05263f,  0.19737f,
+        -0.52256f, -0.81391f, -0.30075f,  0.30639f
+    });
+    auto m_result_inv = m_to_invert.Inverse();
+
+    if (m_result_inv == m_expected_inv) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Matrix inversion produced correct values." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Inverse logic. Check your cofactor/transpose steps." << std::endl;
+    }
+
+    // --- Test 3: The Ultimate Proof (A * A^-1 = Identity) ---
+    // If you multiply a matrix by its inverse, you MUST get the Identity matrix.
+    auto identity_check = rt::Matrix::multiply_matrix(m_to_invert, m_result_inv);
+
+    if (identity_check == rt::Matrix::Identity(4)) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "A * Inverse(A) = Identity Matrix." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "The result of A * A^-1 is not Identity." << std::endl;
+    }
 	return 0;
 }

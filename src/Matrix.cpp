@@ -84,6 +84,17 @@ namespace rt {
 		return (S);
 	}
 
+	Matrix	Matrix::Inverse() const {
+		auto	inv = Matrix(size);
+
+		float	det = Determinant();
+		if (equal(det, 0)) return (inv);
+		for (int row = 0; row < size; row++)
+			for (int col = 0; col < size; col++)
+				inv.values[col * size + row] = Cofactor(row, col) / det;
+		return (inv);
+	}
+
 	float	Matrix::Determinant() const {
 		float	det = 0.0f;
 		if (size == 2)
