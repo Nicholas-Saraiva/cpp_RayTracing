@@ -54,28 +54,28 @@ namespace rt {
 		return (M);
 	}
 
-	Matrix	Matrix::Transpose(const Matrix& M) const{
-		auto	T = Matrix(M.size);
+	Matrix	Matrix::Transpose() const{
+		auto	T = Matrix(size);
 
-		for (int row = 0; row < M.size; row++)
-			for (int col = 0; col < M.size; col++)
-				T.values[col * M.size + row] = M.values[row * M.size + col];
+		for (int row = 0; row < size; row++)
+			for (int col = 0; col < size; col++)
+				T.values[col * size + row] = values[row * size + col];
 		return (T);
 	}
 
 
-	Matrix	Matrix::SubMatrix(const Matrix& M, int row, int col) const {
-		auto	S = Matrix(M.size - 1);
+	Matrix	Matrix::SubMatrix(int row, int col) const {
+		auto	S = Matrix(size - 1);
 		int		s_row = 0;
 		int		s_col = 0;
 
-		for (int m_row = 0; m_row < M.size; m_row++)
+		for (int m_row = 0; m_row < size; m_row++)
 		{
 			if (m_row == row) continue;
-			for (int m_col = 0; m_col < M.size; m_col++)
+			for (int m_col = 0; m_col < size; m_col++)
 			{
 				if (m_col == col) continue;
-				S.values[s_row * S.size + s_col] = M.values[m_row * M.size + m_col];
+				S.values[s_row * S.size + s_col] = values[m_row * size + m_col];
 				s_col++;
 			}
 			s_row++;
@@ -84,23 +84,23 @@ namespace rt {
 		return (S);
 	}
 
-	float	Matrix::Determinant(const Matrix& M) const {
+	float	Matrix::Determinant() const {
 		float	det = 0.0f;
-		if (M.size == 2)
-			return (M.values[0] * M.values[3] - M.values[1] * M.values[2]);
-		for (int col = 0; col < M.size; col++)
-			det += M.values[col] * Cofactor(M, 0, col);
+		if (size == 2)
+			return (values[0] * values[3] - values[1] * values[2]);
+		for (int col = 0; col < size; col++)
+			det += values[col] * Cofactor(0, col);
 		return (det);
 	}
 
-	float	Matrix::Minor(const Matrix& M, int row, int col) const {
-		auto	S = SubMatrix(M, row, col);
+	float	Matrix::Minor(int row, int col) const {
+		auto	S = SubMatrix(row, col);
 
-		return (Determinant(S));
+		return (S.Determinant());
 	}
 
-	float	Matrix::Cofactor(const Matrix& M, int row, int col) const {
-		float	minor = Minor(M, row, col);
+	float	Matrix::Cofactor(int row, int col) const {
+		float	minor = Minor(row, col);
 
 		return ((row + col) % 2 == 0 ? minor : -minor);
 	}
