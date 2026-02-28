@@ -5,6 +5,8 @@
 #include "Color.hpp"
 #include "Canvas.hpp"
 #include "Matrix.hpp"
+#include "Ray.hpp"
+#include "Object.hpp"
 #include <cmath>
 
 int main() {
@@ -565,6 +567,64 @@ std::cout << "\n--- Matrix Transformations ---" << std::endl;
     } else {
         std::cout << "Status: " << rt::term::RED << "Error " <<
             rt::term::RESET << "in chained transformation order." << std::endl;
+    }
+
+    std::cout << "\n--- Ray-Sphere Intersections ---" << std::endl;
+
+    // --- Test 1: A ray intersects a sphere at two points ---
+    rt::Ray r1(rt::Tuple::point(0, 0, -5), rt::Tuple::vector(0, 0, 1));
+    rt::Sphere s1;
+    auto xs1 = rt::Ray::intersect(s1, r1);
+
+    if (xs1.t.size() == 2 && xs1.t[0].t == 4.0f && xs1.t[1].t == 6.0f) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Ray intersects sphere at t=4 and t=6." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in basic intersection math." << std::endl;
+    }
+
+    // --- Test 2: Identifying the 'Hit' ---
+    // Scenario: One intersection is negative, one is positive.
+    rt::Intersection i1(-1.0f, &s1);
+    rt::Intersection i2(1.0f, &s1);
+    rt::Instersections xs2(i1, i2);
+    auto h = rt::Ray::hit(xs2);
+
+    if (h.obj != nullptr && h.t == 1.0f) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Hit correctly identified as the lowest non-negative t." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in Hit logic (negative t handling)." << std::endl;
+    }
+
+    // --- Test 3: Intersecting a Scaled Sphere ---
+    // This tests if your Ray::intersect correctly uses the Inverse Matrix
+    rt::Sphere s2;
+    s2.inv_transform = (rt::Matrix::Scaling(rt::Tuple::vector(2, 2, 2))).Inverse();
+    rt::Ray r2(rt::Tuple::point(0, 0, -5), rt::Tuple::vector(0, 0, 1));
+    auto xs3 = rt::Ray::intersect(s2, r2);
+
+    if (xs3.t.size() == 2 && xs3.t[0].t == 3.0f && xs3.t[1].t == 7.0f) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Intersection with scaled sphere is correct (t=3, t=7)." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "in transformed intersection. Check your Inverse Matrix usage!" << std::endl;
+    }
+
+    // --- Test 4: Intersecting a Translated Sphere ---
+    rt::Sphere s3;
+    s3.inv_transform = (rt::Matrix::Translation(rt::Tuple::vector(5, 0, 0))).Inverse();
+    auto xs4 = rt::Ray::intersect(s3, r2); // Same ray as Test 3
+
+    if (xs4.t.size() == 0) {
+        std::cout << "Status: " << rt::term::GREEN << "Success! " <<
+            rt::term::RESET << "Ray correctly misses a translated sphere." << std::endl;
+    } else {
+        std::cout << "Status: " << rt::term::RED << "Error " <<
+            rt::term::RESET << "Ray should have missed the translated sphere." << std::endl;
     }
 
 	return 0;

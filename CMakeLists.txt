@@ -9,6 +9,7 @@ set(SRC
 	src/Color.cpp
 	src/Canvas.cpp
 	src/Matrix.cpp
+	src/Ray.cpp
 )
 
 include_directories(include)
