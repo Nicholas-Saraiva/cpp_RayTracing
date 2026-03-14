@@ -48,5 +48,5 @@ int main(){
 
     canvas.canvas_to_ppm();
     std::cout << "Status: " << rt::term::GREEN << "Success! " <<
-        rt::term::RESET << "Image saved to chapter5_silhouette.ppm" << std::endl;
+        rt::term::RESET << "Image saved to build/img_<number>.ppm" << std::endl;
 }
