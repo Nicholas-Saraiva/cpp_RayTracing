@@ -31,16 +31,6 @@ namespace rt
 		return (Instersections(inter1, inter2));
 	}
 
-	Intersection	Ray::hit(const Instersections& inter) {
-		auto	hit = Intersection(0, nullptr);
-
-		for (const auto& i : inter.t) {
-			if (i.t > 0 && (hit.obj == nullptr || i.t < hit.t)) {
-				hit = i;
-			}
-		}
-		return hit;
-	}
 
 	Ray	Ray::transform(const Ray& r, const Matrix& transform) {
 		Tuple new_origin = Matrix::multiply_tuple(transform, r.origin);

@@ -4,12 +4,13 @@ project(RayTracer)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SRC
-	src/main.cpp
+	PIT_Sphere.cpp
 	src/Tuple.cpp
 	src/Color.cpp
 	src/Canvas.cpp
 	src/Matrix.cpp
 	src/Ray.cpp
+	src/Intersection.cpp
 )
 
 include_directories(include)

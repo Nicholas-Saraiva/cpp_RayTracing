@@ -8,10 +8,10 @@ namespace rt {
 		Tuple(float x, float y, float z, float w);
 		Tuple(const float (&v)[4]);
 
-		static	Tuple	point(float x, float y, float z);
-		static	Tuple	vector(float x, float y, float z);
-		static	Tuple	cross(const Tuple& a, const Tuple& b);
-		static	float	dot(const Tuple& a, const Tuple& b);
+		static Tuple	point(float x, float y, float z);
+		static Tuple	vector(float x, float y, float z);
+		static Tuple	cross(const Tuple& a, const Tuple& b);
+		static float	dot(const Tuple& a, const Tuple& b);
 
 		bool	is_point() const;
 		float	magnitude() const;

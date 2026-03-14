@@ -7,9 +7,11 @@ namespace  rt
 	class Object {
 	public:
 		Matrix	inv_transform;
+		Tuple	origin;
+
 
 		Object()
-			: inv_transform(Matrix::Identity(4)) {};
+			: inv_transform(Matrix::Identity(4)), origin(Tuple()) {};
 	};
 
 	class Sphere : public Object {

@@ -12,7 +12,7 @@ namespace rt {
 		: width(w), height(h), pixels(w * h, Color(0, 0, 0)) {};
 
 	Color	Canvas::pixel_at(const int x, const int y) const {
-		if (x > 0 && x < width && y > 0 && y < height)
+		if (x >= 0 && x < width && y >= 0 && y < height)
 			return (this->pixels[(y * width) + x]);
 		return (Color());
 	}
@@ -89,7 +89,7 @@ static string	get_unique_filename(const string& base_name) {
 static int	scale(float value) {
 	int	result = static_cast<int>(std::round(value * 255.0f));
 
-	if (result < 0);
+	if (result < 0)
 		return (0);
 	if (result > 255)
 		return (255);

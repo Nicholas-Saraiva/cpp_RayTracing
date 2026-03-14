@@ -54,21 +54,21 @@ namespace rt {
 		return (M);
 	}
 
-	Matrix	Matrix::Translation(const Tuple& T) {
+	Matrix	Matrix::Translation(float x, float y, float z) {
 		auto	Tm = Identity(4);
 
-		Tm.values[3] = T.x;
-		Tm.values[7] = T.y;
-		Tm.values[11] = T.z;
+		Tm.values[3] = x;
+		Tm.values[7] = y;
+		Tm.values[11] = z;
 		return (Tm);
 	}
 
-	Matrix	Matrix::Scaling(const Tuple& T) {
+	Matrix	Matrix::Scaling(float x, float y, float z) {
 		auto	S = Identity(4);
 
-		S.values[0] = T.x;
-		S.values[5] = T.y;
-		S.values[10] = T.z;
+		S.values[0] = x;
+		S.values[5] = y;
+		S.values[10] = z;
 		return (S);
 	}
 
