@@ -1,14 +1,10 @@
 #include <iostream>
-#include "Tuple.hpp"
-#include "Terminal.hpp"
-#include "Math.hpp"
-#include "Color.hpp"
 #include "Canvas.hpp"
-#include "Matrix.hpp"
-#include "Ray.hpp"
+#include "Color.hpp"
 #include "Object.hpp"
-#include "Intersection.hpp"
-#include <cmath>
+#include "Ray.hpp"
+#include "Terminal.hpp"
+#include "Tuple.hpp"
 
 
 int main(){
